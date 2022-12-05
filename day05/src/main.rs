@@ -19,7 +19,7 @@ fn execute_crane_commands(
         .expect("Malformed line");
 
         let mut crates_to_move = Vec::<char>::new();
-        for _i in 0..crate_count {
+        for _ in 0..crate_count {
             crates_to_move.push(stacks[from_stack - 1].pop().unwrap());
         }
         if reverse {
@@ -63,12 +63,10 @@ fn main() {
     // Go through the remaining lines (we are reading in reverse order,
     // so we are inserting crates from bottom to top.)
     for l in &lines[1..] {
-        let mut i = 0;
-        for c in l.chars().collect::<Vec<char>>().chunks(4) {
+        for (i, c) in l.chars().collect::<Vec<char>>().chunks(4).enumerate() {
             if c[1] != ' ' {
                 stacks[i].push(c[1]);
             }
-            i += 1;
         }
     }
 
