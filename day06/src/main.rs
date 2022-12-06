@@ -2,7 +2,7 @@ use std::collections::HashSet;
 use std::fs;
 
 fn count_unique_chars(window: &[char]) -> usize {
-    let hs: HashSet<char> = HashSet::from_iter(window.into_iter().cloned());
+    let hs: HashSet<&char> = HashSet::from_iter(window.into_iter());
     return hs.len();
 }
 
